@@ -172,9 +172,9 @@ class ProfCoursTest extends TestCase
         foreach (self::$prof_a as $prof) {
             $prof->add($conn);
         }
-        $expected = count(self::$prof_a);
-        $num_records = Prof::count($conn);
-        $this->assertEquals($expected, $num_records, "Enregistrement des profs ...\n");
+        $expected = count(self::$prof_a); #on envoie une valeur dans la base de donnée
+        $num_records = Prof::count($conn); #on fait une requête pour récupérer la valeur envoyée à la  bdd
+        $this->assertEquals($expected, $num_records, "Enregistrement des profs ...\n"); #on compare ces deux valeurs
         $this->assertCount($num_records, self::$prof_a, "Enregistrement des profs ...\n");
 
         
@@ -190,6 +190,10 @@ class ProfCoursTest extends TestCase
         * Question 8 : Dans la fonction « testAdd() », s’inspirer de test d’ajout des profs pour tester l’ajout des cours.   
         *
         */
+        $expected = count(self::$cours_a);
+        $num_records = Cours::count($conn);
+        $this->assertEquals($expected, $num_records, "Enregistrement des cours ...\n");
+        $this->assertCount($num_records, self::$cours_a, "Enregistrement des cours ...\n");
         
     }
     
